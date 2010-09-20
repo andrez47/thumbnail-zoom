@@ -83,3 +83,17 @@ p.screenshot {
 	font-size: 16px;
 	font-weight: bold;
 }
+
+.question {
+	font-weight:bold;
+	color: #4993cd;
+}
+
+#banner {
+	position: absolute;
+	top:0;
+	right:0;
+	display:block;
+	text-decoration:none;
+	display: none;
+}
