@@ -390,3 +390,22 @@ ImageZoom.Pages.Imgur = {
     return image;
   }
 };
+
+/**
+ * Photosight
+ * 
+ * ex:
+ * http://s.photosight.ru/img/4/aef/4167500_icon.jpg
+ * http://s.photosight.ru/img/4/aef/4167500_large.jpg
+ */
+ImageZoom.Pages.Photosight = {
+  key: "photosight",
+  name: "Photosight",
+  host: /photosight\.ru/,
+  imageRegExp: /s\.photosight\.ru\/img/,
+  getZoomImage : function(aImageSrc) {
+    let rex = new RegExp(/_(icon)\./);
+    let image = (rex.test(aImageSrc) ? aImageSrc.replace(rex, "_large.") : null);
+    return image;
+  }
+};

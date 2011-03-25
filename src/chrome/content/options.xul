@@ -86,6 +86,8 @@
         name="extensions.imagezoom.imdb.enable" type="bool"/>
       <preference id="imagezoom-options-imgur-pref"
         name="extensions.imagezoom.imgur.enable" type="bool"/>
+      <preference id="imagezoom-options-photosight-pref"
+        name="extensions.imagezoom.photosight.enable" type="bool"/>
     </preferences>
 
     <!-- General -->
@@ -178,6 +180,8 @@
             preference="imagezoom-options-google-pref" />
           <checkbox label="IMDb"
             preference="imagezoom-options-imdb-pref" />
+          <checkbox label="Photosight"
+            preference="imagezoom-options-photosight-pref" />
         </vbox>
       </hbox>
     </groupbox>
