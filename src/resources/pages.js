@@ -418,15 +418,28 @@ ImageZoom.Pages.Imgur = {
  * ex:
  * http://s.photosight.ru/img/4/aef/4167500_icon.jpg
  * http://s.photosight.ru/img/4/aef/4167500_large.jpg
+ * ex2:
+ * http://img-1.photosight.ru/e68/4167692_top_of_day.jpg
+ * http://img-1.photosight.ru/e68/4167692_large.jpg
+ * ex3:
+ * http://s.photosight.ru/img/5/7bd/4167881_crop_1.jpeg
+ * http://s.photosight.ru/img/5/7bd/4167881_large.jpeg
  */
 ImageZoom.Pages.Photosight = {
   key: "photosight",
   name: "Photosight",
   host: /photosight\.ru/,
-  imageRegExp: /s\.photosight\.ru\/img/,
+  imageRegExp: /\.photosight\.ru/,
   getZoomImage : function(aImageSrc) {
     let rex = new RegExp(/_(icon)\./);
-    let image = (rex.test(aImageSrc) ? aImageSrc.replace(rex, "_large.") : null);
-    return image;
+    if (rex.test(aImageSrc))
+      return aImageSrc.replace(rex, "_large.");
+    let rex = new RegExp(/_(crop)_[0-9]+\./);
+    if (rex.test(aImageSrc))
+      return aImageSrc.replace(rex, "_large.");    
+    let rex = new RegExp(/_top_of_day\./);
+    if (rex.test(aImageSrc))
+      return aImageSrc.replace(rex, "_large.");    
+    return null;
   }
 };
