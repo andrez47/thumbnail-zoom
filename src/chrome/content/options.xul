@@ -78,6 +78,8 @@
         name="extensions.imagezoom.lastfm.enable" type="bool"/>
       <preference id="imagezoom-options-google-pref"
         name="extensions.imagezoom.google.enable" type="bool"/>
+      <preference id="imagezoom-options-googlereader-pref"
+        name="extensions.imagezoom.googlereader.enable" type="bool"/>
       <preference id="imagezoom-options-youtube-pref"
         name="extensions.imagezoom.youtube.enable" type="bool"/>
       <preference id="imagezoom-options-dailymile-pref"
@@ -166,6 +168,8 @@
             preference="imagezoom-options-wikipedia-pref" />
           <checkbox label="Daily Mile"
             preference="imagezoom-options-dailymile-pref" />
+          <checkbox label="Google Reader"
+            preference="imagezoom-options-googlereader-pref" />
         </vbox>
         <vbox class="imagezoom-options-pages-column" flex="1">
           <checkbox label="Twitpic"

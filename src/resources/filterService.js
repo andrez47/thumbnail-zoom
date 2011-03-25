@@ -56,6 +56,7 @@ ImageZoom.FilterService = {
     ImageZoom.Pages.Tagged,
     ImageZoom.Pages.LastFM,
     ImageZoom.Pages.Google,
+    ImageZoom.Pages.GoogleReader,
     ImageZoom.Pages.YouTube,
     ImageZoom.Pages.DailyMile,
     ImageZoom.Pages.IMDb,
@@ -75,6 +76,32 @@ ImageZoom.FilterService = {
   },
 
   /**
+   * Detects and gets the image constant.
+   * @param aDocument the document object.
+   * @return the page constant.
+   */
+  getPageConstantByImage : function(aDocument) {
+    this._logger.debug("getPageConstantByImage");
+
+    let pageConstant = -1;
+
+    if (aDocument.src) {
+      let host = aDocument.src;
+      let pageCount = this.pageList.length;
+
+      for (let i = 0; i < pageCount; i++) {
+        let hostRegExp = new RegExp(this.pageList[i].host);
+        if (hostRegExp.test(host)) {
+          pageConstant = i;
+          break;
+        }
+      }
+    }
+
+    return pageConstant;
+  },
+
+  /**
    * Detects and gets the page constant.
    * @param aDocument the document object.
    * @return the page constant.
@@ -87,7 +114,7 @@ ImageZoom.FilterService = {
     if (aDocument.location &&
         ("http:" == aDocument.location.protocol ||
          "https:" == aDocument.location.protocol)) {
-      let host = aDocument.location.host;
+      let host = aDocument.location.href;
       let pageCount = this.pageList.length;
 
       for (let i = 0; i < pageCount; i++) {
