@@ -186,8 +186,6 @@
             preference="imagezoom-options-google-pref" />
           <checkbox label="IMDb"
             preference="imagezoom-options-imdb-pref" />
-          <checkbox label="Photosight"
-            preference="imagezoom-options-photosight-pref" />
         </vbox>
       </hbox>
     </groupbox>
