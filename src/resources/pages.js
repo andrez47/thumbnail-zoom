@@ -331,7 +331,6 @@ ImageZoom.Pages.Google = {
 };
 
 /**
-<<<<<<< HEAD
  * Google reader.
  */
 ImageZoom.Pages.GoogleReader = {
@@ -353,10 +352,7 @@ ImageZoom.Pages.GoogleReader = {
 };
 
 /**
- * YouTube.
-=======
  * YouTube
->>>>>>> orig/master
  */
 ImageZoom.Pages.YouTube = {
   key: "youtube",
