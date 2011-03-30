@@ -36,14 +36,14 @@ const Cu = Components.utils;
 Cu.import("resource://imagezoom/common.js");
 
 /**
- * Pages namespace.
+ * Pages namespace
  */
 if ("undefined" == typeof(ImageZoom.Pages)) {
   ImageZoom.Pages = {};
 };
 
 /**
- * Facebook.
+ * Facebook
  */
 ImageZoom.Pages.Facebook = {
   key: "facebook",
@@ -78,7 +78,7 @@ ImageZoom.Pages.Facebook = {
 };
 
 /**
- * Twitter.
+ * Twitter
  */
 ImageZoom.Pages.Twitter = {
   key: "twitter",
@@ -93,7 +93,7 @@ ImageZoom.Pages.Twitter = {
 };
 
 /**
- * Twitpic.
+ * Twitpic
  */
 ImageZoom.Pages.Twitpic = {
   key: "twitpic",
@@ -111,7 +111,7 @@ ImageZoom.Pages.Twitpic = {
 };
 
 /**
- * LinkedIn.
+ * LinkedIn
  */
 ImageZoom.Pages.LinkedIn = {
   key: "linkedin",
@@ -124,7 +124,7 @@ ImageZoom.Pages.LinkedIn = {
 };
 
 /**
- * Amazon.
+ * Amazon
  */
 ImageZoom.Pages.Amazon = {
   key: "amazon",
@@ -137,7 +137,7 @@ ImageZoom.Pages.Amazon = {
 };
 
 /**
- * Hi5.
+ * Hi5
  */
 ImageZoom.Pages.Hi5 = {
   key: "hi5",
@@ -154,7 +154,7 @@ ImageZoom.Pages.Hi5 = {
 };
 
 /**
- * Picasa.
+ * Picasa
  */
 ImageZoom.Pages.Picasa = {
   key: "picasa",
@@ -169,22 +169,29 @@ ImageZoom.Pages.Picasa = {
 };
 
 /**
- * MySpace.
+ * MySpace
  */
 ImageZoom.Pages.MySpace = {
   key: "myspace",
   name: "MySpace",
   host: /myspace\.com/,
-  imageRegExp: /c[0-9]+\.ac-images\.myspacecdn\.com/,
+  imageRegExp: /images\.myspacecdn\.com/,
+  getSpecialSource : function(aNode, aNodeSource) {
+    let imageSource = (aNode.hasAttribute("data-src") ?
+      aNode.getAttribute("data-src") : aNodeSource);
+    return imageSource;
+  },
   getZoomImage : function(aImageSrc) {
-    let rex = new RegExp(/\/[sm](_.+\.)/);
-    let image = (rex.test(aImageSrc) ? aImageSrc.replace(rex, "/l$1") : null);
+    let rex1 = new RegExp(/(\/|\_)[sml]\./i);
+    let rex2 = new RegExp(/\/(sml|med|lrg)_/i);
+    let image = (rex1.test(aImageSrc) ? aImageSrc.replace(rex1, "$1l.") :
+      (rex2.test(aImageSrc) ? aImageSrc.replace(rex2, "/lrg_") : null));
     return image;
   }
 };
 
 /**
- * Flickr.
+ * Flickr
  */
 ImageZoom.Pages.Flickr = {
   key: "flickr",
@@ -205,7 +212,7 @@ ImageZoom.Pages.Flickr = {
 };
 
 /**
- * Wikipedia.
+ * Wikipedia
  */
 ImageZoom.Pages.Wikipedia = {
   key: "wikipedia",
@@ -224,7 +231,7 @@ ImageZoom.Pages.Wikipedia = {
 };
 
 /**
- * DeviantART.
+ * DeviantART
  */
 ImageZoom.Pages.DeviantART = {
   key: "deviantart",
@@ -239,7 +246,7 @@ ImageZoom.Pages.DeviantART = {
 };
 
 /**
- * PhotoBucket.
+ * PhotoBucket
  */
 ImageZoom.Pages.PhotoBucket = {
   key: "photobucket",
@@ -257,7 +264,7 @@ ImageZoom.Pages.PhotoBucket = {
 };
 
 /**
- * Tagged.
+ * Tagged
  */
 ImageZoom.Pages.Tagged = {
   key: "tagged",
@@ -272,7 +279,7 @@ ImageZoom.Pages.Tagged = {
 };
 
 /**
- * Last.fm.
+ * Last.fm
  */
 ImageZoom.Pages.LastFM = {
   key: "lastfm",
@@ -299,7 +306,7 @@ ImageZoom.Pages.LastFM = {
 };
 
 /**
- * Google.
+ * Google
  */
 ImageZoom.Pages.Google = {
   key: "google",
@@ -324,6 +331,7 @@ ImageZoom.Pages.Google = {
 };
 
 /**
+<<<<<<< HEAD
  * Google reader.
  */
 ImageZoom.Pages.GoogleReader = {
@@ -346,6 +354,9 @@ ImageZoom.Pages.GoogleReader = {
 
 /**
  * YouTube.
+=======
+ * YouTube
+>>>>>>> orig/master
  */
 ImageZoom.Pages.YouTube = {
   key: "youtube",
@@ -368,7 +379,7 @@ ImageZoom.Pages.YouTube = {
 };
 
 /**
- * Daily Mile.
+ * Daily Mile
  */
 ImageZoom.Pages.DailyMile = {
   key: "dailymile",
@@ -414,8 +425,8 @@ ImageZoom.Pages.Imgur = {
 
 /**
  * Photosight
- * 
- * ex:
+ *
+ * ex1:
  * http://s.photosight.ru/img/4/aef/4167500_icon.jpg
  * http://s.photosight.ru/img/4/aef/4167500_large.jpg
  * ex2:
@@ -431,6 +442,7 @@ ImageZoom.Pages.Photosight = {
   host: /photosight\.ru/,
   imageRegExp: /\.photosight\.ru/,
   getZoomImage : function(aImageSrc) {
+<<<<<<< HEAD
     let rex = new RegExp(/_(icon)\./);
     if (rex.test(aImageSrc))
       return aImageSrc.replace(rex, "_large.");
@@ -441,5 +453,14 @@ ImageZoom.Pages.Photosight = {
     if (rex.test(aImageSrc))
       return aImageSrc.replace(rex, "_large.");    
     return null;
+=======
+    let rex1 = new RegExp(/_(icon)\./);
+    let rex2 = new RegExp(/_(crop)_[0-9]+\./);
+    let rex3 = new RegExp(/_top_of_day\./);
+    let image = (rex1.test(aImageSrc) ? aImageSrc.replace(rex1, "_large.") :
+      (rex2.test(aImageSrc) ? aImageSrc.replace(rex2, "_large.") :
+      (rex3.test(aImageSrc) ? aImageSrc.replace(rex3, "_large.") : null)));
+    return image;
+>>>>>>> orig/master
   }
 };

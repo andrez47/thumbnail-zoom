@@ -170,6 +170,8 @@
             preference="imagezoom-options-dailymile-pref" />
           <checkbox label="Google Reader"
             preference="imagezoom-options-googlereader-pref" />
+          <checkbox label="Photosight"
+            preference="imagezoom-options-photosight-pref" />
         </vbox>
         <vbox class="imagezoom-options-pages-column" flex="1">
           <checkbox label="Twitpic"
