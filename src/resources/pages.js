@@ -442,18 +442,6 @@ ImageZoom.Pages.Photosight = {
   host: /photosight\.ru/,
   imageRegExp: /\.photosight\.ru/,
   getZoomImage : function(aImageSrc) {
-<<<<<<< HEAD
-    let rex = new RegExp(/_(icon)\./);
-    if (rex.test(aImageSrc))
-      return aImageSrc.replace(rex, "_large.");
-    let rex = new RegExp(/_(crop)_[0-9]+\./);
-    if (rex.test(aImageSrc))
-      return aImageSrc.replace(rex, "_large.");    
-    let rex = new RegExp(/_top_of_day\./);
-    if (rex.test(aImageSrc))
-      return aImageSrc.replace(rex, "_large.");    
-    return null;
-=======
     let rex1 = new RegExp(/_(icon)\./);
     let rex2 = new RegExp(/_(crop)_[0-9]+\./);
     let rex3 = new RegExp(/_top_of_day\./);
@@ -461,6 +449,5 @@ ImageZoom.Pages.Photosight = {
       (rex2.test(aImageSrc) ? aImageSrc.replace(rex2, "_large.") :
       (rex3.test(aImageSrc) ? aImageSrc.replace(rex3, "_large.") : null)));
     return image;
->>>>>>> orig/master
   }
 };
