@@ -1,0 +1,2 @@
+go src
+run ./install.sh
