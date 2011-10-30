@@ -1,2 +1,4 @@
-go src
-run ./install.sh
+This fork of plugin support for Google Reader thumbnails
+
+to install go src/ and run:
+./install.sh
