@@ -311,7 +311,7 @@ ImageZoom.Pages.LastFM = {
 ImageZoom.Pages.Google = {
   key: "google",
   name: "Google Images",
-  host: /\.google\.[a-z\.]+/,
+  host: /\.google\.[a-z\.]+\/images/,
   imageRegExp: /.+/,
   getSpecialSource : function(aNode, aNodeSource) {
     let imageSource = null;
@@ -324,6 +324,27 @@ ImageZoom.Pages.Google = {
       }
     }
     return imageSource;
+  },
+  getZoomImage : function(aImageSrc) {
+    return aImageSrc;
+  }
+};
+
+/**
+ * Google reader.
+ */
+ImageZoom.Pages.GoogleReader = {
+  key: "googlereader",
+  name: "Google Reader",
+  host: /\.google\.[a-z\.]+\/reader/,
+  imageRegExp: /.+/,
+  getSpecialSource : function(aNode, aNodeSource) {
+    let imageSource = null;
+    aPage = ImageZoom.FilterService.getPageConstantByImage(aNode);
+    ImageZoom.FilterService._logger.debug("reader page - " + aPage);
+    let imageSource = ImageZoom.FilterService.getImageSource(aNode, aPage);
+    let zoomImage = ImageZoom.FilterService.getZoomImage(imageSource, aPage);
+    return zoomImage;
   },
   getZoomImage : function(aImageSrc) {
     return aImageSrc;

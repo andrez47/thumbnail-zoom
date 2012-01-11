@@ -1,0 +1,10 @@
+This fork of plugin support for Google Reader thumbnails.
+
+== YouTube ==
+
+http://www.youtube.com/watch?v=W8KEiSPqmlY
+
+== Install ==
+
+to install go src/ and run:
+./install.sh
